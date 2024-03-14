@@ -8,7 +8,7 @@
    Jest to gra którą uruchamia się jako plik html. Jest napisana w javascripcie i html. Napisałem ją 2 lata temu. 
 4. Folder "dodge_ball":
    Jest to gra którą uruchamia się odpalając plik "main.py". Grę tę zaprogramowałem obiektowo, jest to moja najświeższa zrobiona gra którą programowałem w przerwach pomiędzy zajęciami. Chciałem ją zrobić całkowicie
-   od zera sam oraz bez żadnych pomocy z internetu. Grafika, pomysł na grę, jak i cała część kodu są zrobione przezemnie. Grafikę robiłem w gimpie. Pierwszy raz programowałem grę obiektowo.
+   od zera sam oraz bez żadnych pomocy z internetu. Grafika, pomysł na grę, jak i cała część kodu są zrobione przezemnie. Grafikę robiłem w gimpie. Pierwszy raz programowałem grę obiektowo. Nie jest jeszcze dokończona, ale jak najbardziej grywalna.
 
 
 Na ten moment najbardziej umiem język python dlatego też wszystko w tym jest napisane poza jedną grą w javascripcie i htmlu. Programuje w pythonie w bibliotece pygame bo wydaje mi się, że robiąc grę całkowicie

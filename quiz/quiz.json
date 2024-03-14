@@ -1,0 +1,82 @@
+[
+    {
+        "pytanie":"W którym roku pojawił się Python?",
+        "a":1986,
+        "b":1991,
+        "c":1995,
+        "d":2000,
+        "prawidlowa_odpowiedz":"b"
+    },
+    {
+        "pytanie":"Którą planetą od Słońca jest Ziemia?",
+        "a":1,
+        "b":2,
+        "c":3,
+        "d":4,
+        "prawidlowa_odpowiedz":"c"
+    },
+    {
+        "pytanie":"Który aktor jako pierwszy wcielił się w rolę Jamesa Bonda?",
+        "a":"Sean Connery",
+        "b":"Roger Moore",
+        "c":"Timothy Dalton",
+        "d":"Pierce Brosnan",
+        "prawidlowa_odpowiedz":"a"
+    },
+    {
+        "pytanie":"Kto napisał książkę pod tytułem 'Lalka'?",
+        "a":"J.R.R Tolkien",
+        "b":"Adam Mickiewicz",
+        "c":"Bolesław Prus",
+        "d":"Juliusz Słowacki",
+        "prawidlowa_odpowiedz":"c"
+    },
+    {
+        "pytanie":"'Koincydencja' co to inaczej oznacza?",
+        "a":"Nieszczęście",
+        "b":"Zbieg okoliczności",
+        "c":"Współudział",
+        "d":"Zadośćuczynienie",
+        "prawidlowa_odpowiedz":"b"
+    },
+    {
+        "pytanie":"Z iloma krajami graniczy Polska?",
+        "a":"6",
+        "b":"7",
+        "c":"8",
+        "d":"9",
+        "prawidlowa_odpowiedz":"b"
+    },
+    {
+        "pytanie":"Czym jest inkrementacja?",
+        "a":"Zmniejszenie wartości o 1",
+        "b":"Zwiększenie wartości o n, gdzie n>=2 okoliczności",
+        "c":"Zwiększenie wartości o 1",
+        "d":"Żadna odpowiedź z powyższych nie jest prawidłowa",
+        "prawidlowa_odpowiedz":"c"
+    },
+    {
+        "pytanie":"Czym jest kompilator?",
+        "a":"Urządzenie używane do weryfikacji poprawności kodu programu",
+        "b":"Program umożliwiający sprawne wyszukanie błędów w kodzie (przechodząc po nim linijka po linijce)",
+        "c":"Program pozwalający na czytelniejsze pisanie kodu",
+        "d":"Program tłumaczący kod źródłowy programu na kod maszynowy",
+        "prawidlowa_odpowiedz":"d"
+    },
+    {
+        "pytanie":"Stolicą Stanów Zjednoczonych Ameryki jest?",
+        "a":"Nowy Jork",
+        "b":"Waszyngton",
+        "c":"Chicago",
+        "d":"Kalifornia",
+        "prawidlowa_odpowiedz":"b"
+    },
+    {
+        "pytanie":"Michael Jordan zdobył tytuły mistrza NBA z drużyną?",
+        "a":"Boston Celtics",
+        "b":"Los Angeles Lakers",
+        "c":"Houston Rockets",
+        "d":"Chicago Bulls",
+        "prawidlowa_odpowiedz":"d"
+    }
+]   

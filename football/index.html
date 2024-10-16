@@ -1,0 +1,236 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="RADOSŁAW" />
+    <meta name="description" content="Najprostsza gra - Bramkarz" />
+    <title>Gra Bramkarz</title>
+    
+    <style>
+        #plansza {
+            background-color: grey;
+            border: solid;
+            display: block;
+            margin-left: 450px;
+            margin-top: 100px;
+        }
+        #przycisk {
+            background-color:#3399CC;
+            color:  bisque;
+            width: 200px;
+            height: 100px;
+            border: 1px bisque;
+            border-radius: 4px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            font-size: 45px;
+        }
+        #przycisk:hover {
+            background-color:grey;
+            border: black;
+        }
+    </style>
+    
+</head>
+<body>
+    <h1 id="poziom" style="text-align:center; margin-top: 100px">Level 1</h1>
+    <h1 id="zycia" style="text-align:center">❤️❤️❤️</h1>
+    
+    <canvas id="plansza" width="1000px" height="300px">
+
+    </canvas>
+    <br>
+    <button onclick="StartGry()" id="przycisk" style="margin-left: 840px"><strong>START</strong></button>
+    
+    
+<script type="text/javascript">
+    var plansza_gry = document.getElementById("plansza");
+    var rysowanie = plansza_gry.getContext("2d");
+
+    var paletka_szerokosc = 15;
+    var paletka_dlugosc = 80;
+    var paletka_x = 20;
+    var paletka_y = plansza_gry.height / 2 - paletka_dlugosc/2;
+    var paletka_predkosc = 5;
+    
+    var pilka_promien = 18;
+    var pilka_x = plansza_gry.width - pilka_promien;
+    var pilka_y = plansza_gry.height / 2;
+    var pilka_predkosc_x = 2;
+    var pilka_predkosc_y = 1;
+    
+    var przyspieszenie = 0.3;
+    
+    var level = 1;
+    
+    var zycia = 3;
+    
+    var czy_klawisz_gora_wcisniety = false;
+    var czy_klawisz_dol_wcisniety = false;
+    
+    var idInterval;
+    
+    RysujPaletke();
+    RysujPilke();
+    
+    idInterval = setInterval(animacja, 10);
+    
+    document.addEventListener("keydown", UstawWcisnietyKlawisz, false);
+    document.addEventListener("keyup", UstawPodniesionyKlawisz, false);
+    
+    function GenerujLosowaPredkosc(){
+        var losowa_predkosc = Math.random();
+        losowa_predkosc = 5 + Math.random() * 5; //liczba od 5 do 10
+        losowa_predkosc = losowa_predkosc / 10; // liczba od 1/2 do 1
+        return losowa_predkosc;
+    }
+    
+    function UstawLosowePredkosci(){
+        pilka_predkosc_x = GenerujLosowaPredkosc();
+        pilka_predkosc_y = GenerujLosowaPredkosc();
+        var losowa_predkosc = Math.random();
+        if(losowa_predkosc > 0.5)
+            pilka_predkosc_y *= -1;
+    }
+    
+    function RysujPaletke(){
+        rysowanie.beginPath();
+            rysowanie.rect(paletka_x, paletka_y, paletka_szerokosc, paletka_dlugosc);
+            rysowanie.fillStyle = "blue";
+            rysowanie.fill();
+            rysowanie.strokeStyle = "black";
+            rysowanie.stroke();
+        rysowanie.closePath();
+    }
+    
+    function RysujPilke(){
+        rysowanie.beginPath();
+            rysowanie.arc(pilka_x, pilka_y, pilka_promien, 0, Math.PI*2);
+            rysowanie.fillStyle = "black";
+            rysowanie.fill();
+            rysowanie.strokeStyle = "red";
+            rysowanie.stroke();
+        rysowanie.closePath();
+    }
+
+    function UstawPilke(){
+        pilka_x = plansza_gry.width - pilka_promien;
+        pilka_y = plansza_gry.height / 2;
+    }
+    
+    function UstawPaletke(){
+        paletka_x = 20;
+        paletka_y = plansza_gry.height / 2 - paletka_dlugosc/2;
+    }
+    
+    function animacja(){
+        rysowanie.clearRect(0, 0, plansza_gry.width, plansza_gry.height);
+        RysujPaletke();
+        RysujPilke();
+        if(pilka_x - pilka_promien > 0){
+            pilka_x = pilka_x - pilka_predkosc_x;
+            pilka_y = pilka_y + pilka_predkosc_y;
+        }
+        
+        if(pilka_y - pilka_promien <= 0){
+            pilka_predkosc_y *= -1;
+        }
+        
+        if(pilka_y + pilka_promien >= plansza_gry.height){
+            pilka_predkosc_y *= -1;
+        }
+        
+        
+        if(czy_klawisz_gora_wcisniety == true){
+            if(paletka_y > 0)
+            paletka_y = paletka_y - paletka_predkosc;
+        }
+        
+         if(czy_klawisz_dol_wcisniety == true){
+             if(paletka_y + paletka_dlugosc < plansza_gry.height)
+            paletka_y = paletka_y + paletka_predkosc;
+        }
+        
+        
+        if(pilka_x - pilka_promien <= paletka_x + paletka_szerokosc && pilka_y - pilka_promien <= paletka_y + paletka_dlugosc && pilka_y + pilka_promien >= paletka_y){
+            UstawPilke();
+            ++level;
+            UstawLosowePredkosci();
+            //document.getElementById("test").innerHTML = "Pilka_predkosc_y: " + pilka_predkosc_y;
+            document.getElementById("poziom").innerHTML = "Level " + level;
+            
+            przyspieszenie = przyspieszenie + 0.1; 
+            
+            pilka_predkosc_x += przyspieszenie*3;
+            
+            if(pilka_predkosc_y > 0)
+                pilka_predkosc_y += przyspieszenie;
+            else
+                pilka_predkosc_y -= przyspieszenie;
+            
+            return;
+        }
+        
+        ////////////////////////  DEAD  ///////////////////
+        if(pilka_x - pilka_promien <= 0){
+            --zycia;
+            
+            
+            if(zycia > 0)
+            UstawPilke();
+            
+            if(zycia == 2)
+                document.getElementById("zycia").innerHTML = "❤️❤️";
+            if(zycia == 1)
+                document.getElementById("zycia").innerHTML = "❤️";
+            if(zycia == 0){
+                clearInterval(idInterval);
+                document.getElementById("zycia").innerHTML = "☠️";
+                rysowanie.clearRect(0, 0, plansza_gry.width, plansza_gry.height);
+                paletka_predkosc = 0;
+                rysowanie.font = "50px Arial";
+                rysowanie.fillStyle="bisque";
+                rysowanie.textAlign="center";
+                rysowanie.fillText("PRZEGRAŁEŚ!", plansza_gry.width/2, plansza_gry.height/2); 
+            }
+        }
+        
+       return;
+    }
+    
+    function UstawWcisnietyKlawisz(zdarzenie){
+        if(zdarzenie.key == "w" || zdarzenie.key == "ArrowUp"){
+            czy_klawisz_gora_wcisniety = true;
+        }
+        if(zdarzenie.key == "s" || zdarzenie.key == "ArrowDown"){
+            czy_klawisz_dol_wcisniety = true;
+        }
+    }
+    
+    function UstawPodniesionyKlawisz(zdarzenie){
+        if(zdarzenie.key == "w" || zdarzenie.key == "ArrowUp"){
+            czy_klawisz_gora_wcisniety = false;
+        }
+        if(zdarzenie.key == "s" || zdarzenie.key == "ArrowDown"){
+            czy_klawisz_dol_wcisniety = false;
+        }
+    }
+    
+    function StartGry(){
+        clearInterval(idInterval);
+        UstawPilke();
+        UstawPaletke();
+        level = 1;
+        zycia = 3;
+        document.getElementById("zycia").innerHTML = "❤️❤️❤️";
+        pilka_predkosc_x = 2;
+        pilka_predkosc_y = 1;
+        przyspieszenie = 0.3;
+        paletka_predkosc = 5;
+        idInterval = setInterval(animacja, 10);
+        document.getElementById("poziom").innerHTML = "Level " + level;
+    }
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+# Project "quiz"
+# Date of creation: 05.05.2022
+# Python, JSON
+
+This is one of my first python projects, simple console quiz that retrieves questions and answers from a JSON file.

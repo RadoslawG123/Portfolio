@@ -1,0 +1,5 @@
+# Project "first-game"
+# Date of creation: 23.04.2022
+# Python
+
+This is my first game project. In this game we must avoid meteorites and try to get as many points as we can by surviving and collecting bonus stars. Game controls: "w", "s", "a", "d" or arrow keys on the keyboard.
